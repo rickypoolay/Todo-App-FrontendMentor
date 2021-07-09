@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-@import "config";
+//Breakpoints
+
+@mixin breakpoint($point) {
+    @if point==desktop {
+        @media (min-width: 70em) {
+            @content;
+        }
+    }
+
+    @else if point==laptop {
+        @media (min-width: 64em) {
+            @content;
+        }
+    }
+
+    @else if point==tablet {
+        @media (min-width: 50em) {
+            @content;
+        }
+    }
+
+    @else if point==phablet {
+        @media (min-width: 37.5em) {
+            @content;
+        }
+    }
+
+    @else if point==mobileonly {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+}
 
 * {
     margin:0;
@@ -10,6 +42,41 @@
     user-select: none;
 
 }
+
+:root {
+    //Dark
+    --bodyBackgroundDark: #161621;
+    --taskContainersDark: rgb(37,39,60);
+    --textColorDark : hsl(236, 9%, 61%);
+    --textColorCrossedDark: hsl(233, 11%, 84%);
+    --checkColorFilterLight: brightness(100%);
+    --inputColor: #fff;
+
+    //Light
+    --bodyBackgroundLight: #e6e6e6;
+    --taskContainersLight: #fff;
+    --textColorLight : hsl(236, 9%, 61%);
+    --textColorCrossedLight: hsl(233, 11%, 84%);
+    --checkColorFilterLight: brightness(0%);
+    --inputColor: hsl(236, 9%, 61%);
+}
+
+//Color Themes
+
+.light {
+    --bgColor: var(--bodyBackgroundLight);
+    --bgTasks: var(--taskContainersLight);
+    --bgImage: url('/images/bg-mobile-light.jpg');
+    --checkColor:brightness(0%);
+}
+
+.dark {
+    --bgColor: var(--bodyBackgroundDark);
+    --bgTasks: var(--taskContainersDark);
+    --bgImage: url('/images/bg-mobile-dark.jpg');
+    --checkColor:brightness(100%);
+}
+
 //Body
 
 body {
